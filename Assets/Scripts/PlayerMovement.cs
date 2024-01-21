@@ -23,7 +23,11 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (!Physics.Raycast(transform.position, Vector3.down, distanceToGround)) { return; }
+        if (!Physics.Raycast(transform.position, Vector3.down, distanceToGround))
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            return;
+        }
 
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");

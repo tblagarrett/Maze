@@ -25,12 +25,14 @@ public class JumpPad : MonoBehaviour
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
 
-            // Stop movement
-            rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
-
             // Send the player up
             rb.AddForce(Vector3.up * jumpForce);
             jumpCount++;
+
+            // Stop movement
+            rb.velocity = new Vector3(0f, 0f, 0f);
+
+            Destroy(gameObject);
         }
     }
 }
